@@ -1,0 +1,10 @@
+id,de,en
+CALIBRATE_RANGE,,Move every stick to the maximum and minimum position. As soon as the slider on the left show a resonable behaviour click on Done.
+CONF_JOY,Joystick Konfigurator,Configure Joystick
+DONE,Fertig!,Done!
+FINISH,Abschliessn,Finish
+INTRO,Hi,"Welcome to Go.Race!
+A Simulator to train you FPV skills. It is open source so everyone can improove it until it is the best free trainer!!
+Hopefully you have a lot of fun with it!"
+TITLE,Go.Race,Go.Race
+UNKNOWN,unbekannt,unknown
