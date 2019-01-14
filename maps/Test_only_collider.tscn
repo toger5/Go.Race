@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="PlaneShape" id=1]
+
+
+[sub_resource type="CubeMesh" id=2]
+
+size = Vector3( 20, 0.1, 20 )
+
+[node name="Test_collision_plane" type="StaticBody"]
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = SubResource( 2 )
+material/0 = null
+
