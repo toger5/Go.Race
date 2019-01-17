@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Go.Race"
-run/main_scene="res://main.tscn"
+run/main_scene="res://main_menu/MainMenu.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -118,4 +118,5 @@ locale_filter=[ 0, [  ] ]
 
 quality/shadow_atlas/size=8540
 quality/shadow_atlas/quadrant_0_subdiv=2
+environment/default_clear_color=Color( 0.145098, 0.172549, 0.231373, 1 )
 environment/default_environment="res://default_env.tres"

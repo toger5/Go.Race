@@ -42,5 +42,4 @@ func _on_NextButton_pressed():
 		$VBox/HBox/AxisPreviews.show_inverted()
 		input_getter.set_axis_ranges(axis_range)
 	elif current_state == MAPPING_STATE:
-		#close_it() #oder so
-		pass
+		get_tree().change_scene("res://main_menu/MainMenu.tscn")

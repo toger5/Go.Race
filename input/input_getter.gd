@@ -13,6 +13,17 @@ var calibration = {0 : {AXIS : ROLL, RANGE : [0,0] },
 				3 : {AXIS : THROTTLE, RANGE : [0,0] }
 }
 var joystick_id = 0
+func save_calibration():
+	var file = File.new()
+	file.open("user://save_game.dat", File.WRITE)
+	file.store_string(to_json(calibration))
+	file.close()
+func load_calibration():
+	var file = File.new()
+	if OK == file.open("user://save_game.dat", File.WRITE):
+		calibration = JSON.parse(file.get_as_text)
+		file.close()
+	
 func _ready():
 	set_use_mouse(false)
 	

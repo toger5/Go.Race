@@ -20,18 +20,18 @@ margin_bottom = -20.0
 
 [node name="Header" type="Label" parent="VBox"]
 margin_right = 1004.0
-margin_bottom = 25.0
+margin_bottom = 14.0
 text = "CONF_JOY"
 align = 1
 
 [node name="HBox" type="HBoxContainer" parent="VBox"]
-margin_top = 33.0
+margin_top = 18.0
 margin_right = 1004.0
-margin_bottom = 283.0
+margin_bottom = 268.0
 custom_constants/separation = 20
 
 [node name="AxisPreviews" type="VBoxContainer" parent="VBox/HBox"]
-margin_right = 460.0
+margin_right = 472.0
 margin_bottom = 250.0
 size_flags_horizontal = 3
 script = ExtResource( 2 )
@@ -39,38 +39,38 @@ script = ExtResource( 2 )
 [node name="JoyAxisBar" parent="VBox/HBox/AxisPreviews" instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 460.0
-margin_bottom = 25.0
+margin_right = 472.0
+margin_bottom = 24.0
 
 [node name="JoyAxisBar2" parent="VBox/HBox/AxisPreviews" instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 33.0
-margin_right = 460.0
-margin_bottom = 58.0
+margin_top = 28.0
+margin_right = 472.0
+margin_bottom = 52.0
 
 [node name="JoyAxisBar3" parent="VBox/HBox/AxisPreviews" instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 66.0
-margin_right = 460.0
-margin_bottom = 91.0
+margin_top = 56.0
+margin_right = 472.0
+margin_bottom = 80.0
 
 [node name="Remote" parent="VBox/HBox" instance=ExtResource( 4 )]
-margin_left = 480.0
+margin_left = 492.0
 margin_top = 0.0
 margin_right = 1004.0
 margin_bottom = 250.0
 
 [node name="Instruction" type="Label" parent="VBox"]
-margin_top = 490.0
+margin_top = 522.0
 margin_right = 1004.0
-margin_bottom = 515.0
+margin_bottom = 536.0
 size_flags_vertical = 10
 autowrap = true
 
 [node name="NextButton" type="Button" parent="VBox"]
-margin_top = 523.0
+margin_top = 540.0
 margin_right = 1004.0
 margin_bottom = 560.0
 text = "Next"

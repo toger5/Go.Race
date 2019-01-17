@@ -34,7 +34,6 @@ func _physics_process(delta):
 	var joy_roll := input_getter.get_roll()
 	var joy_pitch := input_getter.get_pitch()
 	var joy_yaw := input_getter.get_yaw()
-	input_getter.reset_speed()
 	
 	angular_velocity = Vector3()
 	apply_impulse(Vector3(),lv(Vector3(0,joy_throttle*power,0)))
