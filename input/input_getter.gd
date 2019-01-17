@@ -13,20 +13,26 @@ var calibration = {0 : {AXIS : ROLL, RANGE : [0,0] },
 				3 : {AXIS : THROTTLE, RANGE : [0,0] }
 }
 var joystick_id = 0
+func _ready():
+	load_calibration()
+	set_use_mouse(false)
+	
+	
 func save_calibration():
 	var file = File.new()
 	file.open("user://save_game.dat", File.WRITE)
-	file.store_string(to_json(calibration))
+	file.store_var(calibration)
 	file.close()
+
 func load_calibration():
 	var file = File.new()
-	if OK == file.open("user://save_game.dat", File.WRITE):
-		calibration = JSON.parse(file.get_as_text)
+	if OK == file.open("user://save_game.dat", File.READ):
+		# TODO write checks for valid data
+		var t = file.get_as_text()
+		print(t)
+		calibration = file.get_var()
 		file.close()
-	
-func _ready():
-	set_use_mouse(false)
-	
+
 func set_axis_ranges(a_r):
 	for i in range(4):
 		calibration[i][RANGE] = a_r[i]
@@ -96,10 +102,7 @@ func get_calibrated(quad_axis) -> float:
 	var axis = calibration[quad_axis][AXIS]
 	var axis_range = calibration[quad_axis][RANGE]
 	var val = Input.get_joy_axis(joystick_id, axis)
-	print("joyval: ",val)
 	var offset_val = (val - (axis_range[1] + axis_range[0])/2)
-	print("off: ", offset_val )
-	print("axis",axis_range[1], "   ",axis_range[0])
 	if (axis_range[1] - axis_range[0]) != 0:
 		return 2.0 * offset_val / (axis_range[1] - axis_range[0])
 	return 0.0

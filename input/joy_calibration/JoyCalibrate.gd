@@ -27,7 +27,8 @@ func _input(ev):
 				calibrated_val = 2*calibrated_val / (axis_range[axis][1] - axis_range[axis][0])
 			$VBox/HBox/AxisPreviews.get_child(axis).get_node("ProgressBar").value = calibrated_val
 			$VBox/HBox/Remote.update_with_current()
-
+			# TODO and
+		
 func _on_axis_selected():
 	var joy_axis = $VBox/HBox/Remote.selected_quad_axis
 	var quad_axis =  $VBox/HBox/AxisPreviews.selected_joy_axis
@@ -42,4 +43,5 @@ func _on_NextButton_pressed():
 		$VBox/HBox/AxisPreviews.show_inverted()
 		input_getter.set_axis_ranges(axis_range)
 	elif current_state == MAPPING_STATE:
+		input_getter.save_calibration()
 		get_tree().change_scene("res://main_menu/MainMenu.tscn")

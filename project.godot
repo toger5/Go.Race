@@ -25,7 +25,7 @@ input_getter="*res://input/input_getter.gd"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "zylann.translation_editor" )
+enabled=PoolStringArray( "todo", "zylann.translation_editor" )
 
 [input]
 
