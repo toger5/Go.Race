@@ -111,7 +111,7 @@ func setup_dock(dock):
 	get_editor_interface().get_script_editor().connect("editor_script_changed", self, "script_changed")
 	
 	todo_regex = RegEx.new()
-	todo_regex.compile("(?:#|//)\\s*(" + PoolStringArray(TYPES.keys()).join("|") + ")\\s*\\:\\s*([^\\n]+)")
+	todo_regex.compile("(?:#|//)\\s*(" + PoolStringArray(TYPES.keys()).join("|") + ")\\s*([^\\n]+)")
 	cache = load_config("cache.ini")
 	current_script = get_editor_interface().get_script_editor().get_current_script()
 	
@@ -435,7 +435,7 @@ func open_item():
 			
 			# special treatment for built-in scripts :)
 			yield(get_tree(), "idle_frame")
-			
+			# NOTE: test
 			if resource:
 				var scn = load(link).instance()
 				var script = find_builtin_script(scn, resource)
