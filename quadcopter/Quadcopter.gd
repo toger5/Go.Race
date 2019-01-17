@@ -1,8 +1,8 @@
 extends RigidBody
 
 # class member variables go here, for example:
-var power = 2
-var rate = 2
+var power = 1.1
+var rate = 6
 
 func _ready():
 	input_getter.set_use_mouse(true)
