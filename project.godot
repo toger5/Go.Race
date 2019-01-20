@@ -114,9 +114,13 @@ trottle_button={
 translations=PoolStringArray( "res://translations/ui_tranlate.en.translation", "res://translations/ui_tranlate.de.translation" )
 locale_filter=[ 0, [  ] ]
 
+[physics]
+
+3d/physics_engine="GodotPhysics - deprecated"
+
 [rendering]
 
 quality/shadow_atlas/size=8540
-quality/shadow_atlas/quadrant_0_subdiv=2
 environment/default_clear_color=Color( 0.145098, 0.172549, 0.231373, 1 )
+quality/filters/msaa=2
 environment/default_environment="res://default_env.tres"

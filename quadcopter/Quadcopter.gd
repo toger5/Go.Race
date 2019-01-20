@@ -1,9 +1,9 @@
 extends RigidBody
 
 # class member variables go here, for example:
-var power = 1.1
+var power = 200.0
 var rate = 6
-
+var air_resistance = 0.006
 func _ready():
 	input_getter.set_use_mouse(true)
 	# Called every time the node is added to the scene.
@@ -20,6 +20,7 @@ func _input(e):
 func lv(v):
 	return transform.basis.xform(v)
 
+
 func _physics_process(delta):
 	var joy_throttle := input_getter.get_throttle()
 	if joy_throttle < 0.0:
@@ -28,9 +29,11 @@ func _physics_process(delta):
 	var joy_pitch := input_getter.get_pitch()
 	var joy_yaw := input_getter.get_yaw()
 	
+	#apply prop impulse
 	angular_velocity = Vector3()
-	apply_impulse(Vector3(),lv(Vector3(0,joy_throttle*power,0)))
+	var motor_force = lv(Vector3(0,joy_throttle*power,0))
 	angular_velocity = lv(Vector3(0 ,0,-joy_roll*rate))
 	angular_velocity = angular_velocity + lv(Vector3(-joy_pitch*rate ,0,0))
 	angular_velocity = angular_velocity + lv(Vector3(0,-joy_yaw*rate,0))
-
+	var air_force = -linear_velocity.normalized() * linear_velocity.length_squared() * air_resistance
+	add_central_force(motor_force + air_force)

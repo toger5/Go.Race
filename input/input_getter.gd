@@ -29,8 +29,9 @@ func load_calibration():
 	if OK == file.open("user://save_game.dat", File.READ):
 		# TODO write checks for valid data
 		var t = file.get_as_text()
-		print(t)
+		
 		calibration = file.get_var()
+		print(calibration)
 		file.close()
 
 func set_axis_ranges(a_r):
@@ -123,6 +124,5 @@ func get_roll() -> float:
 
 func get_throttle() -> float:
 	var j := 1.0/2.0 * (get_calibrated(THROTTLE) + 1.0)
-	print("j:", j)
 	var b := Input.get_action_strength("trottle_button")
 	return absmax(j, b)

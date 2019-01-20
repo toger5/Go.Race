@@ -2,7 +2,7 @@
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 
-[sub_resource type="PlaneShape" id=4]
+[sub_resource type="PlaneShape" id=1]
 
 plane = Plane( 0, 20, 0, 0 )
 
@@ -19,7 +19,7 @@ albedo_texture = ExtResource( 1 )
 transform = Transform( 3.30398, 0, 0, 0, 3.30398, 0, 0, 0, 3.30398, 0, 0, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-shape = SubResource( 4 )
+shape = SubResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 mesh = SubResource( 2 )

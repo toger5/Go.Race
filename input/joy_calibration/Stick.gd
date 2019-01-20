@@ -28,7 +28,7 @@ func set_Y(y):
 	update_nod_pos()
 
 func update_nod_pos():
-	print("curpos: ", current_pos)
+	#print("curpos: ", current_pos)
 	var pos = rect_size/2 + current_pos * (rect_size.x/2 - $Nod.rect_size.x / 2)
 	var offset = $Nod.rect_size / 2
 	$Nod.rect_position = Vector2(pos.x, rect_size.y - pos.y) - offset

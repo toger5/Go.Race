@@ -65,7 +65,7 @@ size = Vector2( 16, 16 )
 
 [sub_resource type="AtlasTexture" id=9]
 
-flags = 4
+flags = 23
 atlas = ExtResource( 1 )
 region = Rect2( 28, 21, 7, 7 )
 
