@@ -1,11 +1,11 @@
 extends RigidBody
 
-# class member variables go here, for example:
-var power = 160.0
-var rate = 3.1
-var air_resistance = 0.01
 
-onready var sound = $AudioStreamPlayer
+export var power = 6.0
+export var rate = 4.2
+export var air_resistance = 0.001
+var power_curve : Curve = load("res://quadcopter/power_curve.tres")
+onready var sound : AudioStreamPlayer = $AudioStreamPlayer as AudioStreamPlayer
 func _ready():
 	sound.stream.loop_mode = AudioStreamSample.LOOP_PING_PONG
 	sound.playing = true
@@ -18,13 +18,17 @@ func _ready():
 var sound_pitch = 0.0
 func _process(delta):
 	var sp = sound.pitch_scale
-	if abs(sound_pitch - sound.pitch_scale) > 0.03:
-		sp += sign(sound_pitch - sound.pitch_scale) * 0.03
+	if abs(sound_pitch - sound.pitch_scale) > 0.07:
+		sp += sign(sound_pitch - sound.pitch_scale) * 0.07
 	else:
-		print("fast")
+#		print("fast")
 		sound.pitch_scale = sound_pitch
+	if sound_pitch < 1:
+		sound.volume_db = -20 * (1-sound_pitch)
+	else:
+		sound.volume_db = 0
 	sound.pitch_scale = max(0.01, sp)
-	print(sound.pitch_scale)
+#	print(sound.pitch_scale)
 func _input(e):
 	#Toggle mouse use mouse (esc -> use mouse = false, click -> use_mouse = true)
 	var mouse_button_ev : = e as InputEventMouseButton
@@ -52,7 +56,8 @@ func _integrate_forces(ph):
 	var joy_yaw := input_getter.get_yaw()
 	
 	#apply prop impulse
-	var motor_force = lv(Vector3(0,joy_throttle*power,0))
+	
+	var motor_force = lv(Vector3(0,power_curve.interpolate(joy_throttle)*power + 0.1,0))
 	var roll_pow = 0.6
 
 #	if abs(ph.angular_velocity.z) < abs(joy_roll*rate):
@@ -74,5 +79,5 @@ func _integrate_forces(ph):
 	ph.angular_velocity += lv(Vector3(0,-joy_yaw*rate,0))
 	var air_force = -linear_velocity.normalized() * linear_velocity.length_squared() * air_resistance
 	ph.add_central_force(motor_force + air_force)
-	sound_pitch = 0.7+motor_force.length()/40 + air_force.length() / 80
+	sound_pitch = 0.3+motor_force.length()*2/power + air_force.length()/2/power
 

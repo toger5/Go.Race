@@ -2,27 +2,24 @@
 
 [ext_resource path="res://quadcopter/quadcopter.tscn" type="PackedScene" id=1]
 [ext_resource path="res://mapSelector.gd" type="Script" id=2]
-[ext_resource path="res://input/joy_calibration/Remote.tscn" type="PackedScene" id=3]
+[ext_resource path="res://input/joy_calibration/Remote_vp.tscn" type="PackedScene" id=3]
 
 [node name="Spatial" type="Spatial"]
 
-[node name="DirectionalLight" type="DirectionalLight" parent="."]
-transform = Transform( 0.850529, -0.525929, 0, 0.369967, 0.598309, 0.710739, -0.373798, -0.604504, 0.703456, 0, 2.42772, 0 )
-light_energy = 0.4
-shadow_enabled = true
-
 [node name="Quad" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.160414, 0 )
-gravity_scale = 2.0
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.404474, 0 )
+mass = 0.0510204
+power = 5.0
 
 [node name="map" type="Spatial" parent="."]
 script = ExtResource( 2 )
 map = 2
 
-[node name="Remote" parent="." instance=ExtResource( 3 )]
-margin_left = 507.726
-margin_top = 346.474
-margin_right = 1019.73
-margin_bottom = 596.474
-auto_update = true
+[node name="Remote_vp" parent="." instance=ExtResource( 3 )]
+anchor_left = 1.0
+anchor_top = 1.0
+margin_left = -157.0
+margin_top = -85.0
+margin_right = -34.0
+margin_bottom = -22.0
 

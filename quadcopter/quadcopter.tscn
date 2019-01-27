@@ -7,10 +7,10 @@
 
 [sub_resource type="BoxShape" id=1]
 
-extents = Vector3( 0.335, 0.109428, 0.382213 )
+extents = Vector3( 0.25919, 0.109428, 0.320749 )
 
 [node name="RigidBody" type="RigidBody"]
-gravity_scale = 10.0
+mass = 0.5
 continuous_cd = true
 contacts_reported = 1
 contact_monitor = true
