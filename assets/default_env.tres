@@ -1,0 +1,18 @@
+[gd_resource type="Environment" format=2]
+
+[resource]
+
+ambient_light_sky_contribution = 0.78
+tonemap_mode = 2
+auto_exposure_min_luma = 0.3
+auto_exposure_max_luma = 0.65
+auto_exposure_speed = 1.0
+ss_reflections_max_steps = 8
+ss_reflections_roughness = false
+ssao_radius = 43.6
+ssao_intensity = 46.5
+ssao_radius2 = 15.2
+ssao_intensity2 = 56.0
+ssao_bias = 2.321
+ssao_ao_channel_affect = 0.27
+

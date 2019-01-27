@@ -1,0 +1,70 @@
+[gd_resource type="AudioBusLayout" load_steps=8 format=2]
+
+[sub_resource type="AudioEffectPanner" id=1]
+
+resource_name = "Panner"
+
+[sub_resource type="AudioEffectPhaser" id=2]
+
+resource_name = "Phaser"
+
+[sub_resource type="AudioEffectPitchShift" id=3]
+
+resource_name = "PitchShift"
+
+[sub_resource type="AudioEffectRecord" id=4]
+
+resource_name = "Record"
+format = 0
+
+[sub_resource type="AudioEffectReverb" id=5]
+
+resource_name = "Reverb"
+room_size = 0.61
+damping = 0.45
+spread = 0.64
+hipass = 0.44
+dry = 0.82
+wet = 0.28
+
+[sub_resource type="AudioEffectCompressor" id=6]
+
+resource_name = "Compressor"
+ratio = 7.9
+gain = -10.8
+attack_us = 49.0
+release_ms = 259.0
+
+[sub_resource type="AudioEffectEQ" id=7]
+
+resource_name = "EQ"
+band_db/32_hz = -6.0
+band_db/100_hz = -4.7
+band_db/320_hz = -3.6
+band_db/1000_hz = -12.5
+band_db/3200_hz = -0.6
+band_db/10000_hz = -12.5
+
+[resource]
+
+bus/1/name = "copter"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = 0.0
+bus/1/send = "Master"
+bus/1/effect/0/effect = SubResource( 1 )
+bus/1/effect/0/enabled = false
+bus/1/effect/1/effect = SubResource( 2 )
+bus/1/effect/1/enabled = false
+bus/1/effect/2/effect = SubResource( 3 )
+bus/1/effect/2/enabled = true
+bus/1/effect/3/effect = SubResource( 4 )
+bus/1/effect/3/enabled = false
+bus/1/effect/4/effect = SubResource( 5 )
+bus/1/effect/4/enabled = false
+bus/1/effect/5/effect = SubResource( 6 )
+bus/1/effect/5/enabled = false
+bus/1/effect/6/effect = SubResource( 7 )
+bus/1/effect/6/enabled = false
+
