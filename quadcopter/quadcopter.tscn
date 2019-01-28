@@ -15,6 +15,10 @@ continuous_cd = true
 contacts_reported = 1
 contact_monitor = true
 script = ExtResource( 1 )
+motor_front_left = NodePath("motor_front_left")
+motor_front_right = NodePath("motor_front_right")
+motor_back_left = NodePath("motor_back_left")
+motor_back_right = NodePath("motor_back_right")
 
 [node name="Scene Root" parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.143191, 0, 0, 0, 0.143191, 0, 0, 0, 0.143191, 0, -0.0343773, 0 )
@@ -24,7 +28,7 @@ visible = false
 shape = SubResource( 1 )
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.84834, -0.529452, 0, 0.529452, 0.84834, 0, 0.0462939, -0.131287 )
+transform = Transform( -1, -4.6327e-08, -7.41387e-08, 0, 0.848048, -0.529919, 8.74228e-08, -0.529919, -0.848048, 2.64592e-09, 0.0649122, 0.161266 )
 fov = 79.0
 far = 1845.5
 
@@ -34,4 +38,16 @@ transform = Transform( 0.279564, 0, 0, 0, 0.279564, 0, 0, 0, 0.279564, 0, 0, 0 )
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 bus = "copter"
+
+[node name="motor_front_left" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24, 0.053, 0.28 )
+
+[node name="motor_front_right" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.24, 0.053, 0.28 )
+
+[node name="motor_back_left" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24, 0.053, -0.28 )
+
+[node name="motor_back_right" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.24, 0.053, -0.28 )
 

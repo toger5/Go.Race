@@ -8,9 +8,14 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Node",
+"class": "PidController",
+"language": "GDScript",
+"path": "res://quadcopter/pid_controller.gd"
+} ]
 _global_script_class_icons={
-
+"PidController": ""
 }
 
 [application]
@@ -25,7 +30,7 @@ input_getter="*res://input/input_getter.gd"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "godot-git-control.funabab", "todo", "zylann.translation_editor" )
+enabled=PoolStringArray( "godot-git-control.funabab", "sketchfab", "todo", "zylann.translation_editor" )
 
 [input]
 
@@ -116,7 +121,7 @@ locale_filter=[ 0, [  ] ]
 
 [physics]
 
-common/physics_fps=120
+common/physics_fps=30
 3d/physics_engine="Bullet"
 3d/smooth_trimesh_collision=true
 

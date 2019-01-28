@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="CubeMesh" id=1]
+
+
+[node name="Spatial" type="Spatial"]
+
+[node name="SoftBody" type="RigidBody" parent="."]
+mode = 3
+angular_velocity = Vector3( 0, 2, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="SoftBody"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="OmniLight" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.11966, 1.71877, 3.4212 )
+omni_range = 13.5139
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 0.592273, -0.253894, 0.76469, 0, 0.949056, 0.315107, -0.805738, -0.186629, 0.5621, 9.29986, 5.03531, 5.27712 )
+

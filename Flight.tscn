@@ -7,9 +7,10 @@
 [node name="Spatial" type="Spatial"]
 
 [node name="Quad" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.404474, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.304877, 23.4248, 0 )
 mass = 0.0510204
-power = 5.0
+axis_lock_angular_x = true
+axis_lock_angular_y = true
 
 [node name="map" type="Spatial" parent="."]
 script = ExtResource( 2 )
@@ -18,8 +19,8 @@ map = 2
 [node name="Remote_vp" parent="." instance=ExtResource( 3 )]
 anchor_left = 1.0
 anchor_top = 1.0
-margin_left = -157.0
-margin_top = -85.0
-margin_right = -34.0
-margin_bottom = -22.0
+margin_left = -191.0
+margin_top = -102.0
+margin_right = -16.0
+margin_bottom = -7.0
 
