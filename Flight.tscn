@@ -9,8 +9,6 @@
 [node name="Quad" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.304877, 23.4248, 0 )
 mass = 0.0510204
-axis_lock_angular_x = true
-axis_lock_angular_y = true
 
 [node name="map" type="Spatial" parent="."]
 script = ExtResource( 2 )

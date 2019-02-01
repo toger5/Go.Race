@@ -114,10 +114,10 @@ class QuadPhysics:
 	func apply_forces(ph : PhysicsDirectBodyState):
 		print("forces not applyed in QuadPhysics, override apply_forces")
 
-	func lv(v : Vector3) -> Vector3:
-		return quad_body.transform.basis.xform(v)
-	func gv(v : Vector3) -> Vector3:
-		return quad_body.transform.basis.xform_inv(v)
+	func l_to_g(v : Vector3) -> Vector3:
+		return transform.basis.xform(v)
+	func g_to_l(v : Vector3) -> Vector3:
+		return transform.basis.xform_inv(v)
 
 class QuadPhysicsLinear extends QuadPhysics:
 	func _init(quad : RigidBody, rate : float, air : float, power : float).(quad,rate,air,power):
@@ -138,7 +138,7 @@ class QuadPhysicsPID extends QuadPhysics:
 	func _init(quad : RigidBody, rate : float, air : float, power : float, P : float, I : float, D : float).(quad,rate,air,power):
 #		for i in range(3):
 #			pids.append(PidController.new(P, I, D))
-		pids.append(PidController.new(0.1, 0.01, 0.001)) #Roll
+		pids.append(PidController.new(0.2, 0.01, 0.001)) #Roll
 		pids.append(PidController.new(0.1, 0.01, 0.001)) #pitch
 		pids.append(PidController.new(0.001, 0.001, 0.1)) #yaw
 
@@ -169,7 +169,7 @@ class QuadPhysicsPID extends QuadPhysics:
 			motor_forces[i] = min(motor_handle_forces[i] + input_power * motor_power, motor_power)
 			current_motor_force += motor_forces[i]
 			
-			ph.add_force(lv(Vector3(0,1,0)) * motor_forces[i], gv(motor_pos[i]))
+			ph.add_force(g_to_l(Vector3(0,1,0)) * motor_forces[i], l_to_g(motor_pos[i]))
 		ph.add_torque(Vector3(0,error_yaw,0))
 #		print(motor_forces)
 		#print("cur_force ", motor_forces)
