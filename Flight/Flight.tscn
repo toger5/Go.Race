@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://quadcopter/quadcopter.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Flight/mapSelector.gd" type="Script" id=2]
+[ext_resource path="res://Flight/FlightControl.gd" type="Script" id=3]
+[ext_resource path="res://input/joy_calibration/Remote_vp.tscn" type="PackedScene" id=4]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Quad" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.304877, 4.63157, 0 )
+
+[node name="map" type="Spatial" parent="."]
+script = ExtResource( 2 )
+map = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 25.0
+margin_top = 25.0
+margin_right = -25.0
+margin_bottom = -25.0
+
+[node name="Control" type="Control" parent="MarginContainer"]
+margin_right = 974.0
+margin_bottom = 550.0
+script = ExtResource( 3 )
+quad_path = NodePath("../../Quad")
+
+[node name="Remote_vp" parent="MarginContainer/Control" instance=ExtResource( 4 )]
+anchor_left = 1.0
+anchor_top = 1.0
+margin_left = -220.0
+margin_top = -109.0
+margin_right = 0.0
+margin_bottom = 0.0
+
+[node name="VBox" type="VBoxContainer" parent="MarginContainer/Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="SpeedLabel" type="Label" parent="MarginContainer/Control/VBox"]
+margin_right = 40.0
+margin_bottom = 14.0
+

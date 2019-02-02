@@ -1,45 +1,55 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://quadcopter/Quadcopter.gd" type="Script" id=1]
-[ext_resource path="res://quadcopter/copter.dae" type="PackedScene" id=2]
-[ext_resource path="res://quadcopter/quadcopter.gltf" type="PackedScene" id=3]
-[ext_resource path="res://assets/mini-quadcopter-flying-loop.wav" type="AudioStream" id=4]
+[ext_resource path="res://quadcopter/quadcopter.gltf" type="PackedScene" id=2]
+[ext_resource path="res://assets/prop_tex.png" type="Texture" id=3]
+[ext_resource path="res://quadcopter/copter.dae" type="PackedScene" id=4]
+[ext_resource path="res://assets/mini-quadcopter-flying-loop.wav" type="AudioStream" id=5]
 
 [sub_resource type="BoxShape" id=1]
 
-extents = Vector3( 0.25919, 0.109428, 0.320749 )
+extents = Vector3( 0.311583, 0.109428, 0.383533 )
+
+[sub_resource type="PlaneMesh" id=2]
+
+size = Vector2( 3, 3 )
+subdivide_width = 5
+subdivide_depth = 5
+
+[sub_resource type="SpatialMaterial" id=3]
+
+flags_transparent = true
+albedo_texture = ExtResource( 3 )
 
 [node name="RigidBody" type="RigidBody"]
-mass = 0.5
+mass = 0.0510204
 continuous_cd = true
 contacts_reported = 1
 contact_monitor = true
-axis_lock_angular_x = true
-axis_lock_angular_y = true
 script = ExtResource( 1 )
 motor_front_left = NodePath("motor_front_left")
 motor_front_right = NodePath("motor_front_right")
 motor_back_left = NodePath("motor_back_left")
 motor_back_right = NodePath("motor_back_right")
 
-[node name="Scene Root" parent="." instance=ExtResource( 2 )]
-transform = Transform( 0.143191, 0, 0, 0, 0.143191, 0, 0, 0, 0.143191, 0, -0.0343773, 0 )
-visible = false
-
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 1 )
 
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( -1, -4.6327e-08, -7.41387e-08, 0, 0.848048, -0.529919, 8.74228e-08, -0.529919, -0.848048, 2.64592e-09, 0.0649122, 0.161266 )
-fov = 79.0
-far = 1845.5
-
-[node name="Scene Root2" parent="." instance=ExtResource( 3 )]
+[node name="ImportModel" parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.279564, 0, 0, 0, 0.279564, 0, 0, 0, 0.279564, 0, 0, 0 )
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 4 )
-bus = "copter"
+[node name="Plane" parent="ImportModel" index="6"]
+visible = false
+
+[node name="MeshInstance" type="MeshInstance" parent="ImportModel"]
+transform = Transform( 0.389057, 0, 0, 0, 0.389057, 0, 0, 0, 0.389057, 0.830341, 0.189842, 0.991452 )
+mesh = SubResource( 2 )
+material/0 = SubResource( 3 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="ImportModel"]
+transform = Transform( 0.389057, 0, 0, 0, 0.389057, 0, 0, 0, 0.389057, -0.818434, 0.189842, 0.991452 )
+mesh = SubResource( 2 )
+material/0 = SubResource( 3 )
 
 [node name="motor_front_left" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24, 0.053, 0.28 )
@@ -53,3 +63,37 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24, 0.053, -0.28 )
 [node name="motor_back_right" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.24, 0.053, -0.28 )
 
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( -1, -5.7526e-08, -1.39608e-07, 0, 0.924584, -0.380978, 1.50996e-07, -0.380978, -0.924584, 2.64592e-09, 0.0649122, 0.161266 )
+doppler_tracking = 2
+fov = 79.0
+far = 1845.5
+
+[node name="_old_model" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.143191, 0, 0, 0, 0.143191, 0, 0, 0, 0.143191, 0, -0.0343773, 0 )
+visible = false
+
+[node name="Sounds" type="Node" parent="."]
+editor/display_folded = true
+
+[node name="m1" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 5 )
+bus = "copter"
+
+[node name="m2" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 5 )
+volume_db = -20.0
+bus = "copter"
+
+[node name="m3" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 5 )
+volume_db = -20.0
+bus = "copter"
+
+[node name="m4" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 5 )
+volume_db = -20.0
+bus = "copter"
+
+
+[editable path="ImportModel"]
